@@ -1,6 +1,12 @@
 if (Translator.BetterBibTeX) {
     // Zotero.debug(JSON.stringify(item))
     // Zotero.debug(JSON.stringify(reference))
+    for (const creator of item.creators) {
+	var parts = creator.firstName.split(/\s/).map(x => x[0].concat('.'));
+	creator.firstName = parts.join(' ');
+    }
+    reference.addCreators();
+
     if (item.itemType === "conferencePaper") {
 	var lookupTable = [
 	    ['International ACM SIGIR Conference on Research (and|&) Development in Information Retrieval', 'sigir'],
