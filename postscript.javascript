@@ -10,6 +10,7 @@ if (Translator.BetterBibTeX) {
     if (item.itemType === "conferencePaper") {
 	var lookupTable = [
 	    ['International ACM SIGIR Conference on Research (and|&) Development in Information Retrieval', 'sigir'],
+	    ['Proceedings of the .* International Conference on Research and Development in Information Retrieval', 'sigir'],
 	    ['Proceedings of the 34th International ACM SIGIR Conference on Research and Development in Information', 'sigir'],
 	    ['SIGIR International Conference on Theory of Information Retrieval', 'ictir'],
 	    ['Conference on the Theory of Information Retrieval', 'ictir'],
