@@ -30,6 +30,7 @@ if (Translator.BetterBibTeX) {
 	    ['Conference on Computational Natural Language Learning', 'conll'],
 	    ['Information Interaction in Context Symposium', 'iiix'],
 	    ['ACM Conference on Recommender Systems', 'recsys'],
+	    ['International Conference on Neural Information Processing Systems', 'nips'],
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
