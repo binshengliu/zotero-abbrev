@@ -32,6 +32,8 @@ if (Translator.BetterBibTeX) {
 	    ['ACM Conference on Recommender Systems', 'recsys'],
 	    ['International Conference on Neural Information Processing Systems', 'nips'],
 	    ['ACM SIGKDD International Conference', 'kdd'],
+	    ['Annual Meeting .* Association for Computational Linguistics', 'acl'],
+	    ['Conference on Computer Vision and Pattern Recognition', 'cvpr'],
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
