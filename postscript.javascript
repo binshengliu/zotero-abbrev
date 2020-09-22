@@ -34,6 +34,8 @@ if (Translator.BetterBibTeX) {
 	    ['ACM SIGKDD International Conference', 'kdd'],
 	    ['Annual Meeting .* Association for Computational Linguistics', 'acl'],
 	    ['Conference on Computer Vision and Pattern Recognition', 'cvpr'],
+	    ['International Conference on Learning Representations', 'iclr'],
+	    ['North American .* Association for Computational Linguistics', 'naacl'],
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
