@@ -10,8 +10,8 @@ if (Translator.BetterBibTeX) {
     if (item.itemType === "conferencePaper") {
 	var lookupTable = [
 	    ['International ACM SIGIR Conference on Research (and|&) Development in Information Retrieval', 'sigir'],
-	    ['Proceedings of the .* International Conference on Research and Development in Information Retrieval', 'sigir'],
-	    ['Proceedings of the 34th International ACM SIGIR Conference on Research and Development in Information', 'sigir'],
+	    ['Proceedings of the .* Conference on Research and Development in Information Retrieval', 'sigir'],
+	    ['Proceedings of the .* Conference on Research and Development in Information', 'sigir'],
 	    ['SIGIR International Conference on Theory of Information Retrieval', 'ictir'],
 	    ['Conference on the Theory of Information Retrieval', 'ictir'],
 	    ['Conference on Information and Knowledge Management', 'cikm'],
@@ -31,6 +31,7 @@ if (Translator.BetterBibTeX) {
 	    ['Information Interaction in Context Symposium', 'iiix'],
 	    ['ACM Conference on Recommender Systems', 'recsys'],
 	    ['International Conference on Neural Information Processing Systems', 'nips'],
+	    ['Advances in Neural Information Processing Systems', 'nips'],
 	    ['ACM SIGKDD International Conference', 'kdd'],
 	    ['Annual Meeting .* Association for Computational Linguistics', 'acl'],
 	    ['Conference on Computer Vision and Pattern Recognition', 'cvpr'],
@@ -48,6 +49,7 @@ if (Translator.BetterBibTeX) {
 	var lookupTable = [
 	    ['Information Retrieval Journal', 'irj'],
 	    ['Information Processing and Management', 'ipm'],
+	    ['Journal .* American Society .* Information Science', 'jasist'],
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
