@@ -48,7 +48,7 @@ if (Translator.BetterBibTeX) {
     } else if (item.itemType === "journalArticle") {
 	var lookupTable = [
 	    ['Information Retrieval Journal', 'irj'],
-	    ['Information Processing and Management', 'ipm'],
+	    ['Information Processing .* Management', 'ipm'],
 	    ['Journal .* American Society .* Information Science', 'jasist'],
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
