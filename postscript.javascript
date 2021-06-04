@@ -35,13 +35,18 @@ if (Translator.BetterBibTeX) {
 	    ['ACM SIGKDD International Conference', 'kdd'],
 	    ['Annual Meeting .* Association for Computational Linguistics', 'acl'],
 	    ['Computer Vision .* Pattern Recognition', 'cvpr'],
-	    ['International Conference .* Learning Representations', 'iclr'],
+	    ['International Conference on Learning Representations', 'iclr'],
 	    ['North American .* Association for Computational Linguistics', 'naacl'],
 	    ['International Conference on Data Engineering', 'icde'],
 	]
+	// Find available item fields here
+	// https://retorque.re/zotero-better-bibtex/exporting/extra-fields/#labelvariable-list
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
-	    if (item.publicationTitle.match(re)) {
+	    if (item.publicationTitle && item.publicationTitle.match(re)) {
+		reference.add({name: 'booktitle', bibtex: lookupTable[i][1]})
+		break;
+	    } else if (item.conferenceName && item.conferenceName.match(re)) {
 		reference.add({name: 'booktitle', bibtex: lookupTable[i][1]})
 		break;
 	    }
