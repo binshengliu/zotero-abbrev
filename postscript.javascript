@@ -38,6 +38,7 @@ if (Translator.BetterBibTeX) {
 	    ['International Conference on Learning Representations', 'iclr'],
 	    ['North American .* Association for Computational Linguistics', 'naacl'],
 	    ['International Conference on Data Engineering', 'icde'],
+	    ['SIAM International Conference on Data Mining', 'sdm'],
 	]
 	// Find available item fields here
 	// https://retorque.re/zotero-better-bibtex/exporting/extra-fields/#labelvariable-list
