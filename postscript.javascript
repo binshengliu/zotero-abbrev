@@ -56,6 +56,7 @@ if (Translator.BetterBibTeX) {
 	    ['International Joint Conferences on Artificial Intelligence', 'ijcai'],
 	    ['Web Information Systems Engineering', 'wise'],
 	    ['AAAI Conference on Artificial Intelligence', 'aaai'],
+	    ['NTCIR', 'ntcir'],
 	]
 	// Find available item fields here
 	// https://retorque.re/zotero-better-bibtex/exporting/extra-fields/#labelvariable-list
