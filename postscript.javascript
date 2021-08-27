@@ -24,6 +24,7 @@ if (Translator.BetterBibTeX) {
 	    ['International Conference on Machine Learning', 'icml'],
 	    ['SIGMOD international conference on Management of data', 'sigmod'],
 	    ['International Conference on Computational Linguistics', 'coling'],
+	    ['Empirical Methods in Natural +Language Processing.*System Demonstrations', 'emnlpdemos'],
 	    ['Empirical Methods in Natural +Language Processing', 'emnlp'],
 	    ['Findings .* EMNLP', '{Proc. Findings@EMNLP}'],
 	    ['Symposium on Applied Computing', 'sac'],
