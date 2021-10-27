@@ -2,12 +2,16 @@ if (Translator.BetterBibTeX) {
     // Zotero.debug(JSON.stringify(item))
     // Zotero.debug(JSON.stringify(reference))
     for (const creator of item.creators) {
-	var parts = creator.firstName.split(/\s/).map(x => x[0].concat('.'));
-	creator.firstName = parts.join(' ');
+	if (creator.firstName) {
+	    var parts = creator.firstName.split(/\s/).map(x => x[0].concat('.'));
+	    creator.firstName = parts.join(' ');
+	}
     }
     reference.addCreators();
 
+    var order;
     if (item.itemType === "conferencePaper") {
+	order = ["title", "booktitle", "author", "year", "pages"]
 	var lookupTable = [
 	    ['International ACM SIGIR Conference on Research (and|&) Development in Information Retrieval', 'sigir'],
 	    ['Proceedings of the .* Conference on Research and Development in Information Retrieval', 'sigir'],
@@ -78,13 +82,14 @@ if (Translator.BetterBibTeX) {
 	    }
 	}
     } else if (item.itemType === "journalArticle") {
+	order = ["title", "journal", "author", "year", "volume", "number", "pages"]
 	var lookupTable = [
 	    ['Information Retrieval Journal', 'irj'],
 	    ['Information Processing .* Management', 'ipm'],
 	    ['Journal .* American Society .* Information Science', 'jasist'],
 	    ['Foundations and Trends®? in Information Retrieval', 'fntir'],
 	    ['Journal of General Internal Medicine', '{J. Gen. Intern. Med.}'],
-	    ['ACM Transactions on Information Systems', 'acmtois'], 
+	    ['ACM Transactions on Information Systems', 'acmtois'],
 	    ['Journal of Machine Learning Research', 'jmlr'],
 	    ['Journal of the Royal Statistical Society.* Series C .*Applied Statistics.*', '{J. R. Stat. Soc. Ser. C Appl. Stat.}'],
 	    ['^Neural Computation$', '{Neural Comput.}'],
@@ -95,10 +100,54 @@ if (Translator.BetterBibTeX) {
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
-	    if (item.publicationTitle.match(re)) {
+	    if (item.publicationTitle && item.publicationTitle.match(re)) {
 		reference.add({name: 'journal', bibtex: lookupTable[i][1]})
 		break;
 	    }
 	}
+    } else if (item.itemType === "book") {
+	order = ["title", "author", "year", "publisher", "address", "isbn", "pages"]
+    } else if (item.itemType === "bookSection") {
+	order = ["title", "booktitle", "author", "year", "publisher", "address", "isbn", "pages"]
+    } else if (item.itemType === "report") {
+	order = ["title", "author", "year", "institution", "address"]
+    } else if (item.itemType === "document") {
+	// misc
+	order = ["title", "author", "year"]
+    } else if (item.itemType === "webpage") {
+	// https://retorque.re/zotero-better-bibtex/exporting/scripting/#add-accessdate-url-for-bibtex
+	if (item.accessDate) {
+	    reference.add({ name: 'note', value: "(accessed " + item.accessDate.replace(/\s*T?\d+:\d+:\d+.*/, '') + ")" });
+	}
+	if (item.url) {
+	    reference.add({ name: 'howpublished', bibtex: "{\\url{" + reference.enc_verbatim({value: item.url}) + "}}" });
+	}
+	order = ["title", "note", "howpublished"]
+    } else if (item.itemType === "presentation") {
+	// misc
+	order = ["title", "author", "year"]
+    } else if (item.itemType === "thesis") {
+	// misc
+	order = ["title", "author", "year"]
+    } else {
+	order = ["title", "author", "year"]
     }
+
+    // Removed extra fields
+    for (const [field, value] of Object.keys(reference.has).filter(other => !order.includes(other)).map(f => [f, reference.has[f]])) {
+	delete reference.has[field]
+    }
+
+    // Reorder
+    // https://retorque.re/zotero-better-bibtex/exporting/scripting/
+    for (const [field, value] of order.filter(front => reference.has[front]).map(f => [f, reference.has[f]])) {
+        delete reference.has[field]
+        reference.has[field] = value
+    }
+
+    // Zotero.debug(JSON.stringify(reference))
 }
+
+// Local Variables:
+// mode: js
+// End:
