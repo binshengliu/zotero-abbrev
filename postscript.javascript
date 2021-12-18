@@ -67,6 +67,7 @@ if (Translator.BetterBibTeX) {
 	    ['International Joint Conferences on Artificial Intelligence', 'ijcai'],
 	    ['Web Information Systems Engineering', 'wise'],
 	    ['AAAI Conference on Artificial Intelligence', 'aaai'],
+	    ['Joint Conference of the Information Retrieval Communities in Europe', 'circle'],
 	    ['NTCIR', 'ntcir'],
 	]
 	// Find available item fields here
