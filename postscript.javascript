@@ -98,6 +98,7 @@ if (Translator.BetterBibTeX) {
 	    ['IEEE Transactions on Neural Networks and Learning Systems', '{IEEE Trans. Neural Networks Learn. Syst.}'],
 	    ['Journal of General Internal Medicine', '{J. Gen. Intern. Med.}'],
 	    ['^Machine Learning$', '{Mach. Learn.}'],
+	    ['Proceedings of the National Academy of Sciences', 'pnas'],
 	]
 	for (var i = 0; i < lookupTable.length; i++) {
 	    var re = new RegExp(lookupTable[i][0], 'i');
